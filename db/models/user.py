@@ -4,6 +4,8 @@ User database model
 
 
 from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
+from .pdf import PDF
 from db.config import Base
 
 class User(Base):
@@ -19,3 +21,5 @@ class User(Base):
     password = Column(String)
     is_active = Column(Boolean, default=True)
     is_superuser = Column(Boolean, default=False)
+
+    pdfs = relationship(PDF, back_populates="user")
