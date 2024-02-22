@@ -8,7 +8,6 @@ from sqlalchemy.orm import relationship
 from db.config import Base
 from .user import User
 
-
 class PDF(Base):
     """
     pdf model
@@ -19,4 +18,5 @@ class PDF(Base):
     title = Column(String)
     file = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
+
     user = relationship(User, back_populates="pdfs")
